@@ -487,7 +487,42 @@ myStorage.car.inside['glove box'];
 
 
 function pairElement(str) {
-  return str.split();
+  return str.split('').map((ele) => {
+    switch(ele){
+      case 'G':
+        return ['G','C'];
+      case 'C':
+        return ['C','G'];
+      case 'A':
+        return ['A','T'];
+      case 'T':
+        return ['T','A'];
+    }
+  });
 }
 
-pairElement("GCG");
+function pairElement2(str) {
+    let pairs = {
+    A: "T",
+    T: "A",
+    C: "G",
+    G: "C"
+  };
+  return str.split('').map((ele) => [ele,pairs[ele]]);
+}
+
+pairElement2("GCGT");
+
+
+function fearNotLetter(str) {
+  let firts = str.charCodeAt(0);
+  let second = str.charCodeAt(str.length-1);
+  let counter = firts;
+  while(counter < second){
+    counter++;
+  }
+}
+
+fearNotLetter("abce");
+//fearNotLetter("abcdefghjklmno");
+//fearNotLetter("bcdf")
